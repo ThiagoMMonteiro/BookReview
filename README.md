@@ -1,2 +1,3 @@
-# project1
-project1 old version of Harvard course
+# Project 1
+
+Web Programming with Python and JavaScript
