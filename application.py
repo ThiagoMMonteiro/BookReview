@@ -1,6 +1,6 @@
 import os, requests
 
-from flask import Flask, session
+from flask import Flask, session, render_template
 from flask_session import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -25,6 +25,6 @@ db = scoped_session(sessionmaker(bind=engine))
 @app.route("/")
 def index():
 	
-	res = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key": "l7fl9mJYQXzlmikeRwJuhg", "isbns": "9781632168146"})
-	print(res.json())
-    # return "Project 1: TODOOO"
+	return render_template("index.html")
+	# res = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key": "l7fl9mJYQXzlmikeRwJuhg", "isbns": "9781632168146"})
+	# print(res.json())
