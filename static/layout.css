@@ -19,7 +19,7 @@ body {
 }
 
 .footer a {
-  font-size: 16px;
+  font-size: 13px;
   background-color: #ff6d33;
   color: white;
 }
@@ -32,14 +32,14 @@ body {
   text-align: center;
 }
 
-
-
-/* Custom page CSS
--------------------------------------------------- */
-/* Not required for template or sticky footer method. */
-
-/*.container {
-  width: auto;
-  max-width: 680px;
-  padding: 0 15px;
-}*/
+@media (min-width: 825px) {
+  span::before {
+    content: "2020 Thiago Mânica Monteiro | All rights reserved.";
+  }
+}
+@media (max-width: 824px) {
+  span::before {
+    font-size: 10px;
+    content: "2020 Thiago Monteiro | All rights reserved.";
+  }
+}
