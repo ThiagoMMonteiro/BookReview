@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+{% endblock %}
+
+{% block title %}
+    Book Review Login
+{% endblock %}
+
+{% block body %}
+<div id="bgnddivlogin" class="container-fluid">
+    <illustration>Designed by awesomecontent / Freepik</illustration>
+    <div id="logindiv" class="container border rounded">  
+        <h2>User login</h2>
+        <!-- <a href="{{ url_for('register') }}" class="badge">Register</a> -->
+    </div>
+</div>
+{% endblock %}

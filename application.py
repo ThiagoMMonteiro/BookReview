@@ -28,3 +28,11 @@ def index():
 	return render_template("index.html")
 	# res = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key": "l7fl9mJYQXzlmikeRwJuhg", "isbns": "9781632168146"})
 	# print(res.json())
+
+@app.route("/login")
+def login():
+    return render_template("login.html")
+
+@app.route("/register")
+def register():
+    return render_template("register.html")

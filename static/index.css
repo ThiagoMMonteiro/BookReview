@@ -1,0 +1,45 @@
+illustration {
+	color: white;
+	font-size: 10px;
+}
+
+#indexdiv {
+	background-color: #ffc1a8;
+	text-align: center;
+	width: 80%;
+	margin-top: 70px;
+}
+
+#indexdiv h2 {
+	color:  #ff6d33;
+	text-align: center;
+	padding: 20px;
+	margin: 40px;
+}
+
+#indexdiv h5 {
+	color: white;
+	text-align: center;
+	/*padding: 20px;*/
+	margin: 40px;	
+}
+
+#indexdiv a {
+  font-size: 18px;
+  background-color: #ff6d33;
+  color: white;
+  margin-bottom: 20px;
+}
+
+#indexdiv a:hover {
+  color: black;
+}
+
+#bgnddivindex {
+	width: 100%;
+    height: 100%;
+    background-image: url(720.jpg);
+    position: absolute;
+    background-size: cover;
+    text-align: right;
+}

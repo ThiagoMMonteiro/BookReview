@@ -1,13 +1,21 @@
 {% extends "layout.html" %}
 
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+{% endblock %}
+
 {% block title %}
-    Book Review
+    Book Review Index
 {% endblock %}
 
 {% block body %}
-<div class="container">
-    <h1>Welcome to Book Review! Please, register or login</h1>
-    <a href="#" class="badge">Login</a>
-    <a href="#" class="badge">Register</a>
+<div id="bgnddivindex" class="container-fluid">
+    <illustration>Designed by awesomecontent / Freepik</illustration>
+    <div id="indexdiv" class="container border rounded"> 
+        <h2>Welcome to Book Review!</h2>
+        <h5>To get started, login or register.</h5>
+        <a href="{{ url_for('login') }}" class="badge">Login</a>
+        <a href="{{ url_for('register') }}" class="badge">Register</a>
+    </div>
 </div>
 {% endblock %}
