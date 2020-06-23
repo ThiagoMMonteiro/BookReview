@@ -40,6 +40,10 @@ illustration {
     height: 100%;
     background-image: url(720.jpg);
     position: absolute;
-    background-size: cover;
+    /*background-size: cover;*/
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #ff6d33;
     text-align: right;
 }
