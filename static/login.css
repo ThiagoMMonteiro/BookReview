@@ -3,6 +3,27 @@ illustration {
 	font-size: 10px;
 }
 
+form h1 {
+	color: #ff6d33;
+}
+
+.form-signin button {
+  font-size: 16px;
+  background-color: #ff6d33;
+  color: white;
+  margin-bottom: 20px;
+  border: none;
+}
+
+.form-signin button:hover {
+  color: black;
+  background-color: #ff6d33;
+}
+
+#checkboxlogin:checked {
+	background-color: #ff6d33;
+}
+
 #logindiv {
 	background-color: #ffc1a8;
 	text-align: center;

@@ -3,15 +3,15 @@ illustration {
 	font-size: 10px;
 }
 
-form button {
-
-}
-
 #registerform button {
   font-size: 16px;
   background-color: #ff6d33;
   color: white;
   margin-bottom: 20px;
+}
+
+#registerform button:hover {
+  color: black;
 }
 
 .form-group {

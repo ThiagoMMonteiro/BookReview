@@ -14,7 +14,7 @@ engine = create_engine(os.getenv("DATABASE_URL"))
 db = scoped_session(sessionmaker(bind=engine))
 
 
-db.execute("CREATE TABLE users (id SERIAL PRIMARY KEY, username VARCHAR NOT NULL, password VARCHAR NOT NULL);")
+db.execute("CREATE TABLE users (id SERIAL PRIMARY KEY, email VARCHAR NOT NULL, password VARCHAR NOT NULL);")
 print("Table 'users' created!")
 # db.execute("CREATE TABLE reviews (id SERIAL PRIMARY KEY, user VARCHAR NOT NULL, password VARCHAR NOT NULL")
 # print("Table user created!")
