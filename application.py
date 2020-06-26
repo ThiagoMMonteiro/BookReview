@@ -36,16 +36,8 @@ def index():
 def login():
 	return render_template("login.html")
 
-@app.route('/logout')
-def logout():
-    session.pop('user_id', None)
-    session.pop('user_email', None)
-    session.pop('user_password', None)
-
-    return redirect(url_for('login'))
-
-@app.route("/search", methods=["POST", "GET"])
-def search():
+@app.route("/loginsuccess", methods=["POST"])
+def loginsuccess():
 	if request.method == 'POST':		
 		email = request.form.get("email")
 		password = request.form.get("password")
@@ -67,10 +59,32 @@ def search():
 		session["user_id"] = user_id
 		session["user_email"] = user_email
 		session["user_password"] = user_password
-	elif request.method == 'GET' and 'user_email' not in session:
-		return render_template("error.html", message="You need to register before!")
+		return redirect(url_for('search'))
+		# return render_template("search.html", user_id = session["user_id"], user_email = session["user_email"])
 
-	return render_template("search.html", user_id = session["user_id"], user_email = session["user_email"])
+@app.route('/logout')
+def logout():
+    session.pop('user_id', None)
+    session.pop('user_email', None)
+    session.pop('user_password', None)
+
+    return redirect(url_for('login'))
+
+@app.route("/search", methods=["POST", "GET"])
+def search():
+	if request.method == 'POST' and 'user_email' in session:
+		#IMPLEMENTAR AQUI A PARTE DE BUSCA
+		search_type = request.form.get("inlineRadioOptions")
+		if search_type == 'option1':
+			return render_template("search.html", user_id = session["user_id"], user_email = session["user_email"])
+		else:
+			return render_template("error.html", message="Não selecionado")
+	elif request.method == 'GET' and 'user_email' in session:
+		return render_template("search.html", user_id = session["user_id"], user_email = session["user_email"])
+	elif request.method == 'POST' and 'user_email' not in session:
+		return render_template("error.html", message="You need to register or login (if you already have an account) to do a search!")
+	else:
+		return render_template("error.html", message="You must be logged in to perform a search")
 
 @app.route("/register")
 def register():

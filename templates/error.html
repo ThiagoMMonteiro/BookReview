@@ -1,10 +1,22 @@
 {% extends "layout.html" %}
 
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='error.css') }}">
+{% endblock %}
+
 {% block title %}
     Error
 {% endblock %}
 
 {% block body %}
-    <h1>Error</h1>
-    {{ message }}
+<!-- <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Home</li>
+</ol> -->
+<div id="bgnddiverror" class="container-fluid">	
+	<div id="errordiv" class="container border rounded col-6">  
+		<h5>{{ message }}</h5>
+		<a href="{{ url_for('login') }}" class="badge">Login</a>
+        <a href="{{ url_for('register') }}" class="badge">Register</a>
+    </div>
+</div>
 {% endblock %}

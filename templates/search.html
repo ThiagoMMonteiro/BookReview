@@ -16,8 +16,8 @@
 <div id="bgnddivsearch" class="container-fluid">
 	<h6>Logged in as {{ user_email }} ({{ user_id }})</h6>
 	<a class="btn btns actived" href="{{ url_for('logout')}}" >Logout</a>
-	<div>
-    	
+	<div id="searchdiv" class="container border rounded col-6">  
+		<h5>Welcome! You are now able to search for books in the form above.</h5>
     </div>
 </div>
 {% endblock %}
