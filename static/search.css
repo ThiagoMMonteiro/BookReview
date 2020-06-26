@@ -1,0 +1,18 @@
+#bgnddivsearch {
+	width: 100%;
+    height: 100%;
+    position: absolute;
+    text-align: right;
+    background-color: #ff6d33;
+}
+
+#bgnddivsearch h6 {
+	color: white;
+	font-size: 12px;
+}
+
+#bgnddivsearch a {
+	color: #ff6d33;
+	background-color: white;
+	font-size: 14px;
+}

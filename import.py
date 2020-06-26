@@ -1,10 +1,8 @@
 import os
+import csv
 
-# from flask import Flask, render_template, request
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
-
-app = Flask(__name__)
 
 # Check for environment variable
 if not os.getenv("DATABASE_URL"):
@@ -13,10 +11,15 @@ if not os.getenv("DATABASE_URL"):
 engine = create_engine(os.getenv("DATABASE_URL"))
 db = scoped_session(sessionmaker(bind=engine))
 
+def main():
+    f = open("books.csv")
+    reader = csv.reader(f)
+    next(reader)
+    for isbn, title, author, publication_year in reader:
+        db.execute("INSERT INTO books (isbn, title, author, publication_year) VALUES (:isbn, :title, :author, :publication_year)",
+                    {"isbn": isbn, "title": title, "author": author, "publication_year": publication_year})
+        print(f"Added book titled {title} to 'books' table.")
+    db.commit()
 
-db.execute("CREATE TABLE users (id SERIAL PRIMARY KEY, user VARCHAR NOT NULL, password VARCHAR NOT NULL")
-
-
-db.execute("INSERT INTO passengers (name, flight_id) VALUES (:name, :flight_id)",
-        {"name": name, "flight_id": flight_id})
-db.commit()
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='search.css') }}">
+{% endblock %}
+
+{% block title %}
+    search Page (Home)
+{% endblock %}
+
+
+{% block body %}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Home</li>
+</ol>
+<div id="bgnddivsearch" class="container-fluid">
+	<h6>Logged in as {{ user_email }} ({{ user_id }})</h6>
+	<a class="btn btns actived" href="{{ url_for('logout')}}" >Logout</a>
+	<div>
+    	
+    </div>
+</div>
+{% endblock %}

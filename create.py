@@ -16,8 +16,10 @@ db = scoped_session(sessionmaker(bind=engine))
 
 db.execute("CREATE TABLE users (id SERIAL PRIMARY KEY, email VARCHAR NOT NULL, password VARCHAR NOT NULL);")
 print("Table 'users' created!")
+db.execute("CREATE TABLE books (id SERIAL PRIMARY KEY, isbn VARCHAR NOT NULL, title VARCHAR NOT NULL, author VARCHAR NOT NULL, \
+			publication_year INTEGER NOT NULL);")
+print("Table 'books' created!")
 # db.execute("CREATE TABLE reviews (id SERIAL PRIMARY KEY, user VARCHAR NOT NULL, password VARCHAR NOT NULL")
 # print("Table user created!")
-# db.execute("CREATE TABLE books (id SERIAL PRIMARY KEY, user VARCHAR NOT NULL, password VARCHAR NOT NULL")
-# print("Table user created!")
+
 db.commit() 
