@@ -9,16 +9,13 @@
 {% endblock %}
 
 {% block body %}
-<ol class="breadcrumb">
-	<li class="breadcrumb-item active" aria-current="page">Index</li>
-</ol>
-<div id="bgnddivindex" class="container-fluid">
-    <illustration>Designed by awesomecontent / Freepik</illustration>
+    <ol class="breadcrumb">
+    	<li class="breadcrumb-item active" aria-current="page">Index</li>
+    </ol>
     <div id="indexdiv" class="container border rounded"> 
         <h2>Welcome to Book Review!</h2>
         <h5>To get started, login or register.</h5>
         <a href="{{ url_for('login') }}" class="badge">Login</a>
         <a href="{{ url_for('register') }}" class="badge">Register</a>
     </div>
-</div>
 {% endblock %}

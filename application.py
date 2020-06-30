@@ -42,7 +42,7 @@ def loginsuccess():
 		# Make sure user exists.
 		if db.execute("SELECT * FROM users WHERE email = :email and password = :password", 
 			{"email": email, "password": password}).rowcount == 0:
-			return render_template("error.html", message="You need to register before!")
+			return render_template("error.html", message="Your data doesn't match or you need to register!")
 
 		# Save session user infos (id, email and password).
 		user_row = db.execute("SELECT * FROM users WHERE email = :email AND password = :password", 
@@ -57,7 +57,6 @@ def loginsuccess():
 		session["user_email"] = user_email
 		session["user_password"] = user_password
 		return redirect(url_for('search'))
-		# return render_template("search.html", user_id = session["user_id"], user_email = session["user_email"])
 
 @app.route('/logout')
 def logout():
@@ -103,6 +102,9 @@ def book(isbn):
 	book_clicked = db.execute("SELECT * FROM books WHERE isbn = :isbn",
 									{"isbn": isbn}).fetchall()
 
+	reviews = db.execute("SELECT * FROM reviews WHERE isbn = :isbn",
+									{"isbn": isbn}).fetchall()
+
 	res = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key": "l7fl9mJYQXzlmikeRwJuhg", "isbns": isbn})
 
 	if request.method == 'POST':
@@ -114,14 +116,14 @@ def book(isbn):
 						{"rating": rating, "review": review, "isbn": isbn, "email": session["user_email"]})
 			db.commit()
 		else:
-			return render_template("book.html", user_id = session["user_id"], user_email = session["user_email"], book_clicked = book_clicked, res = res.json(), message = "Users cannot submit multiple reviews for the same book !!")
+			return render_template("book.html", user_id = session["user_id"], user_email = session["user_email"], book_clicked = book_clicked, reviews = reviews, res = res.json(), message = "Users cannot submit multiple reviews for the same book !!")
 
 	if res:
-		return render_template("book.html", user_id = session["user_id"], user_email = session["user_email"], book_clicked = book_clicked, res = res.json())
+		return render_template("book.html", user_id = session["user_id"], user_email = session["user_email"], book_clicked = book_clicked, reviews = reviews, res = res.json())
 	else:
 		res['books'][0]['average_rating'] = "goodreads does not have any reviews on this book"
 		res['books'][0]['work_ratings_count'] = "goodreads does not have any reviews on this book"
-		return render_template("book.html", user_id = session["user_id"], user_email = session["user_email"], book_clicked = book_clicked, res = res.json())
+		return render_template("book.html", user_id = session["user_id"], user_email = session["user_email"], book_clicked = book_clicked, reviews = reviews, res = res.json())
 		
 @app.route("/register")
 def register():

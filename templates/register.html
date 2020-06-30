@@ -9,12 +9,10 @@
 {% endblock %}
 
 {% block body %}
-<ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Index</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Register</li>
-</ol>
-<div id="bgnddivregister" class="container-fluid">
-    <illustration>Designed by awesomecontent / Freepik</illustration>
+	<ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Index</a></li>
+	    <li class="breadcrumb-item active" aria-current="page">Register</li>
+	</ol>
     <div id="registerdiv" class="container border rounded">  
         <h2>User register</h2>
 		<form id="registerform" action="{{ url_for('registersuccess') }}" method="post">
@@ -33,7 +31,5 @@
 			</div>
 			<button type="submit" class="btn">Submit</button>
 		</form>
-        <!-- <a href="{{ url_for('register') }}" class="badge">Register</a> -->
     </div>
-</div>
 {% endblock %}

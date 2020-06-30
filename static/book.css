@@ -1,3 +1,14 @@
+h6 {
+	color: white;
+	font-size: 12px;
+}
+
+h3{
+	color: black;
+	text-align: center;
+	/*font-size: 12px;*/
+}
+
 .review div {
 	margin: 10px auto;
 }
@@ -22,31 +33,11 @@
   background-color: #ff6d33;
 }
 
-#bgnddivbook {
-	width: 100%;
-    height: 100%;
-    position: absolute;
-    text-align: right;
-    background-color: #ff6d33;
-}
-
-#bgnddivbook h3{
-	color: black;
-	text-align: center;
-	/*font-size: 12px;*/
-}
-
-#bgnddivbook h6 {
-	color: white;
-	font-size: 12px;
-}
-
-#bgnddivbook a {
+#logout {
 	color: #ff6d33;
 	background-color: white;
 	font-size: 14px;
 }
-
 
 #bookdiv {
 	background-color: #ffc1a8;
@@ -54,11 +45,6 @@
 	width: 80%;
 	margin-top: 70px;
 }
-
-/*#bookdiv h5 {
-	color: #ff6d33;
-	text-align: center;
-}*/
 
 #bookdiv h4 {
 	/*color: #ff6d33;*/
@@ -114,6 +100,7 @@
 	text-align: center;
 	width: 80%;
 	margin-top: 70px;
+	margin-bottom: 40px;
 }
 
 #bookdivreviewssub h4 {

@@ -10,35 +10,42 @@
 
 
 {% block body %}
-<ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{{ url_for('search') }}">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Book</li>
-</ol>
-<div id="bgnddivbook" class="container-fluid">
+	<div>
+		<ol class="breadcrumb">
+		    <li class="breadcrumb-item"><a href="{{ url_for('search') }}">Home</a></li>
+		    <li class="breadcrumb-item active" aria-current="page">Book</li>
+		</ol>
+	</div>
 	<h6>Logged in as {{ user_email }} ({{ user_id }})</h6>	
-	<a class="btn btns actived" href="{{ url_for('logout')}}" >Logout</a>
+	<a id="logout" class="btn btns actived" href="{{ url_for('logout')}}" >Logout</a>
 	{% if message %}
 		<h3>{{message}}</h3>
 	{% endif %}
 	<div id="bookdiv" class="container border rounded col-6">
 		<h4>{{book_clicked[0][2]}}</h4>
 		<ul>
-            <li>ISBN: {{book_clicked[0][1]}}</li>
-            <li>Title: {{book_clicked[0][2]}}</li>
-            <li>Author: {{book_clicked[0][3]}}</li>
-            <li>Year: {{book_clicked[0][4]}}</li>
-            <li>-----------------</li>
-            <li>Goodreads Average Rating: {{res['books'][0]['average_rating']}}</li>
-            <li>Goodreads Work Ratings Count: {{res['books'][0]['work_ratings_count']}}</li>
+	        <li>ISBN: {{book_clicked[0][1]}}</li>
+	        <li>Title: {{book_clicked[0][2]}}</li>
+	        <li>Author: {{book_clicked[0][3]}}</li>
+	        <li>Year: {{book_clicked[0][4]}}</li>
+	        <li>-----------------</li>
+	        <li>Goodreads Average Rating: {{res['books'][0]['average_rating']}}</li>
+	        <li>Goodreads Work Ratings Count: {{res['books'][0]['work_ratings_count']}}</li>
 		</ul>
-    </div>
-<!--     <div id="bookdivreviews" class="container border rounded col-6">
+	</div>
+    <div id="bookdivreviews" class="container border rounded col-6">
 		<h4>Reviews</h4>
 		<ul>
-            <li>First review</li>
-            <li>Second review</li>
+			{% if reviews %}
+				{% for rev in reviews %}
+	            	<li>Rating: {{rev[1]}} | Opinion: {{rev[2]}} | User: {{rev[4]}}</li>
+	            	<li>--------------------</li>
+            	{% endfor %}
+            {% else %}
+            	<h4>This book has no rating yet.</h4>
+            {% endif %}
 		</ul>
-    </div> -->
+    </div>
     <div id="bookdivreviewssub" class="container border rounded col-6">
 		<h4>Submit a review below!</h4>
 		<form class="review" action="{{ url_for('book', isbn=book_clicked[0][1])}}" method="post">
@@ -59,5 +66,4 @@
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
 		</form>
     </div>
-</div>
 {% endblock %}

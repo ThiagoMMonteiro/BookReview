@@ -1,8 +1,3 @@
-illustration {
-	color: white;
-	font-size: 10px;
-}
-
 form h1 {
 	color: #ff6d33;
 }
@@ -47,13 +42,4 @@ form h1 {
 
 #logindiv a:hover {
   color: black;
-}
-
-#bgnddivlogin {
-	width: 100%;
-    height: 100%;
-    background-image: url(720.jpg);
-    position: absolute;
-    background-size: cover;
-    text-align: right;
 }
