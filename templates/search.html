@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block title %}
-    search Page (Home)
+    Search Page (Home)
 {% endblock %}
 
 
@@ -16,8 +16,21 @@
 <div id="bgnddivsearch" class="container-fluid">
 	<h6>Logged in as {{ user_email }} ({{ user_id }})</h6>
 	<a class="btn btns actived" href="{{ url_for('logout')}}" >Logout</a>
-	<div id="searchdiv" class="container border rounded col-6">  
-		<h5>Welcome! You are now able to search for books in the form above.</h5>
+	<div id="searchdiv" class="container border rounded col-6">
+		{% if try_search == 0 %}
+			<h5>Welcome! You are now able to search for books in the form above.</h5>
+		{% elif try_search == 1 and user_search == None %}
+			<h5>You need to select a search type! (ISBN, Title or Author) AND to write something in the field!</h5>
+		{% elif try_search == 1 and not user_search %}
+			<h5>No results found for your search! Try again.</h5>
+    	{% else %}
+    		<ul>
+    			<h4>Results: </h4>
+		        {% for book in user_search %}
+		            <li><a href="{{ url_for('book', isbn=book.isbn)}}">{{ book[2] }}, {{ book[3] }}</a></li>
+		        {% endfor %}
+    		</ul>
+    	{% endif %}
     </div>
 </div>
 {% endblock %}

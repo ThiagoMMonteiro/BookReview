@@ -28,9 +28,6 @@ def index():
 	if 'user_email' not in session:
 		return render_template("index.html")
 	return redirect(url_for('search'))
-	
-	# res = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key": "l7fl9mJYQXzlmikeRwJuhg", "isbns": "9781632168146"})
-	# print(res.json())
 
 @app.route("/login")
 def login():
@@ -67,25 +64,65 @@ def logout():
     session.pop('user_id', None)
     session.pop('user_email', None)
     session.pop('user_password', None)
+    # session.pop('user_search', None)
 
     return redirect(url_for('login'))
 
 @app.route("/search", methods=["POST", "GET"])
 def search():
+	try_search = 0
 	if request.method == 'POST' and 'user_email' in session:
-		#IMPLEMENTAR AQUI A PARTE DE BUSCA
 		search_type = request.form.get("inlineRadioOptions")
-		if search_type == 'option1':
-			return render_template("search.html", user_id = session["user_id"], user_email = session["user_email"])
+		to_search = request.form.get("to_search")
+		try_search = 1
+		if search_type == 'isbn' and to_search is not "":
+			user_search = db.execute("SELECT * FROM books WHERE isbn LIKE :to_search", 
+								{"to_search": '%'+to_search+'%'}).fetchall()
+			return render_template("search.html", user_id = session["user_id"], user_email = session["user_email"], user_search = user_search, try_search = try_search)
+		elif search_type == 'title' and to_search is not "":
+			user_search = db.execute("SELECT * FROM books WHERE title LIKE :to_search", 
+								{"to_search": '%'+to_search+'%'}).fetchall()
+			return render_template("search.html", user_id = session["user_id"], user_email = session["user_email"], user_search = user_search, try_search = try_search)	
+		elif search_type == 'author' and to_search is not "":
+			user_search = db.execute("SELECT * FROM books WHERE author LIKE :to_search", 
+								{"to_search": '%'+to_search+'%'}).fetchall()
+			return render_template("search.html", user_id = session["user_id"], user_email = session["user_email"], user_search = user_search, try_search = try_search)		
 		else:
-			return render_template("error.html", message="Não selecionado")
+			return render_template("search.html", user_id = session["user_id"], user_email = session["user_email"], user_search = None, try_search = try_search)
+			
 	elif request.method == 'GET' and 'user_email' in session:
-		return render_template("search.html", user_id = session["user_id"], user_email = session["user_email"])
+		return render_template("search.html", user_id = session["user_id"], user_email = session["user_email"], try_search = try_search)
 	elif request.method == 'POST' and 'user_email' not in session:
 		return render_template("error.html", message="You need to register or login (if you already have an account) to do a search!")
 	else:
 		return render_template("error.html", message="You must be logged in to perform a search")
 
+@app.route("/book/<string:isbn>", methods=["POST", "GET"])
+def book(isbn):
+	isbn = isbn
+	book_clicked = db.execute("SELECT * FROM books WHERE isbn = :isbn",
+									{"isbn": isbn}).fetchall()
+
+	res = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key": "l7fl9mJYQXzlmikeRwJuhg", "isbns": isbn})
+
+	if request.method == 'POST':
+		if db.execute("SELECT * FROM reviews WHERE email = :email and isbn = :isbn", 
+			{"email": session["user_email"], "isbn": isbn}).rowcount == 0:
+			rating = request.form.get("rating")
+			review = request.form.get("review")
+			db.execute("INSERT INTO reviews (rating, review, isbn, email) VALUES (:rating, :review, :isbn, :email)", 
+						{"rating": rating, "review": review, "isbn": isbn, "email": session["user_email"]})
+			db.commit()
+		else:
+			return render_template("book.html", user_id = session["user_id"], user_email = session["user_email"], book_clicked = book_clicked, res = res.json(), message = "Users cannot submit multiple reviews for the same book !!")
+
+	if res:
+		return render_template("book.html", user_id = session["user_id"], user_email = session["user_email"], book_clicked = book_clicked, res = res.json())
+	else:
+		res['books'][0]['average_rating'] = "goodreads does not have any reviews on this book"
+		res['books'][0]['work_ratings_count'] = "goodreads does not have any reviews on this book"
+		return render_template("book.html", user_id = session["user_id"], user_email = session["user_email"], book_clicked = book_clicked, res = res.json())
+		
 @app.route("/register")
 def register():
 	return render_template("register.html")

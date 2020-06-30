@@ -18,15 +18,36 @@
 }
 
 #searchdiv {
-	background-color: #ff6d33;
+	background-color: #ffc1a8;
 	text-align: center;
 	width: 80%;
 	margin-top: 70px;
 }
 
 #searchdiv h5 {
-	color: white;
+	color: #ff6d33;
 	text-align: center;
 	/*padding: 20px;*/
 	margin: 40px;	
+}
+
+#searchdiv h4 {
+	color: #ff6d33;
+	text-align: center;
+	/*padding: 20px;*/
+	margin: 40px;	
+}
+
+#searchdiv ul {
+	color: #ff6d33;
+	font-weight: bold;
+	text-align: center;
+	display: table;
+  	margin: 30px auto;
+}
+
+#searchdiv li {
+	color: #ff6d33;
+	display: table;
+  	margin: 10px;
 }

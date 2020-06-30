@@ -19,7 +19,7 @@ print("Table 'users' created!")
 db.execute("CREATE TABLE books (id SERIAL PRIMARY KEY, isbn VARCHAR NOT NULL, title VARCHAR NOT NULL, author VARCHAR NOT NULL, \
 			publication_year INTEGER NOT NULL);")
 print("Table 'books' created!")
-# db.execute("CREATE TABLE reviews (id SERIAL PRIMARY KEY, user VARCHAR NOT NULL, password VARCHAR NOT NULL")
-# print("Table user created!")
+db.execute("CREATE TABLE reviews (id SERIAL PRIMARY KEY, rating VARCHAR NOT NULL, review VARCHAR, isbn VARCHAR NOT NULL, email VARCHAR NOT NULL);")
+print("Table reviews created!")
 
 db.commit() 

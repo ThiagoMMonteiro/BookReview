@@ -1,0 +1,124 @@
+.review div {
+	margin: 10px auto;
+}
+
+.review label {
+	color:  #ff6d33;
+	font-weight: bold;
+}
+
+.review button {
+  font-size: 16px;
+  background-color: #ff6d33;
+  color: white;
+  margin-bottom: 20px;
+  border: none;
+  width: 200px;
+  margin: 10px auto;
+}
+
+.review button:hover {
+  color: black;
+  background-color: #ff6d33;
+}
+
+#bgnddivbook {
+	width: 100%;
+    height: 100%;
+    position: absolute;
+    text-align: right;
+    background-color: #ff6d33;
+}
+
+#bgnddivbook h3{
+	color: black;
+	text-align: center;
+	/*font-size: 12px;*/
+}
+
+#bgnddivbook h6 {
+	color: white;
+	font-size: 12px;
+}
+
+#bgnddivbook a {
+	color: #ff6d33;
+	background-color: white;
+	font-size: 14px;
+}
+
+
+#bookdiv {
+	background-color: #ffc1a8;
+	text-align: center;
+	width: 80%;
+	margin-top: 70px;
+}
+
+/*#bookdiv h5 {
+	color: #ff6d33;
+	text-align: center;
+}*/
+
+#bookdiv h4 {
+	/*color: #ff6d33;*/
+	color: white;
+	text-align: center;
+	margin: 40px;	
+}
+
+#bookdiv ul {
+	font-weight: bold;
+	text-align: center;
+	display: table;
+  	margin: 30px auto;
+}
+
+#bookdiv li {
+	color: #ff6d33;
+	/*color: white;*/
+	display: table;
+  	/*margin: 10px;*/
+}
+
+#bookdivreviews {
+	background-color: #ffc1a8;
+	text-align: center;
+	width: 80%;
+	margin-top: 70px;
+}
+
+#bookdivreviews h4 {
+	/*color: #ff6d33;*/
+	color: white;
+	text-align: center;
+	margin: 40px;	
+}
+
+#bookdivreviews ul {
+	font-weight: bold;
+	text-align: center;
+	display: table;
+  	margin: 30px auto;
+}
+
+#bookdivreviews li {
+	color: #ff6d33;
+	/*color: white;*/
+	display: table;
+  	/*margin: 10px;*/
+}
+
+#bookdivreviewssub {
+	background-color: #ffc1a8;
+	text-align: center;
+	width: 80%;
+	margin-top: 70px;
+}
+
+#bookdivreviewssub h4 {
+	/*color: #ff6d33;*/
+	color: white;
+	text-align: center;
+	margin: 40px;	
+}
