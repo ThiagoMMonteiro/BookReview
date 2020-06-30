@@ -9,14 +9,11 @@
 {% endblock %}
 
 {% block body %}
-<!-- <ol class="breadcrumb">
-    <li class="breadcrumb-item active" aria-current="page">Home</li>
-</ol> -->
-<div id="bgnddiverror" class="container-fluid">	
-	<div id="errordiv" class="container border rounded col-6">  
-		<h5>{{ message }}</h5>
-		<a href="{{ url_for('login') }}" class="badge">Login</a>
-        <a href="{{ url_for('register') }}" class="badge">Register</a>
-    </div>
-</div>
+	<div id="bgnddiverror" class="container-fluid">	
+		<div id="errordiv" class="container border rounded col-6">  
+			<h5>{{ message }}</h5>
+			<a href="{{ url_for('login') }}" class="badge">Login</a>
+	        <a href="{{ url_for('register') }}" class="badge">Register</a>
+	    </div>
+	</div>
 {% endblock %}

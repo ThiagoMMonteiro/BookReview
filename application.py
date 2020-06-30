@@ -1,6 +1,6 @@
 import os, requests
 
-from flask import Flask, session, render_template, request, redirect, url_for
+from flask import Flask, session, render_template, request, redirect, url_for, jsonify
 from flask_session import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -63,7 +63,6 @@ def logout():
     session.pop('user_id', None)
     session.pop('user_email', None)
     session.pop('user_password', None)
-    # session.pop('user_search', None)
 
     return redirect(url_for('login'))
 
@@ -136,5 +135,26 @@ def registersuccess():
 	db.execute("INSERT INTO users (email, password) VALUES (:email, :password)", {"email": email, "password": password})
 	db.commit()
 	return redirect(url_for('login'))
+
+@app.route("/api/<string:isbn>", methods=["GET"])
+def api(isbn):
+	isbn = isbn
+	book_api_request = db.execute("SELECT * FROM books WHERE isbn = :isbn",
+									{"isbn": isbn}).fetchone()
+	if book_api_request == None:
+		return jsonify({"error": "Request Not Found."}), 404
+
+	res = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key": "l7fl9mJYQXzlmikeRwJuhg", "isbns": isbn})
+	book_review_count = res.json()['books'][0]['work_reviews_count']
+	book_average_score = res.json()['books'][0]['average_rating']
+
+	dic_resquest = {
+	"title": book_api_request.title,
+    "author": book_api_request.author,
+    "year": book_api_request.publication_year,
+    "isbn": book_api_request.isbn,
+    "review_count": book_review_count,
+    "average_score": book_average_score
+	}
 	
-	
+	return  jsonify(dic_resquest)
