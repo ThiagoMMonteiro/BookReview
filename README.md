@@ -81,5 +81,3 @@ file containing books and their details to be inserted into the database initial
 ## Explaining requirements.txt (briefly)
 
 It contains some libraries needed to run the application. Due to some platforms, something may have been missing, if it does, you will only need to install the missing libraries.
-
-[![Project 1 Explanation](http://img.youtube.com/vi/2AtpsNDbSho/0.jpg)](http://www.youtube.com/watch?v=2AtpsNDbSho "Project 1 Explanation")
