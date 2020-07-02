@@ -2,9 +2,9 @@
 
 [![author](https://img.shields.io/badge/Author-thiagommonteiro-blue)](https://www.linkedin.com/in/thiago-m-monteiro/) 
 
-Web Programming with Python and JavaScript
+Web Programming with Python (Flask), HTML, CSS, PostgreeSQL, external API (Goodreads)
 
-Hi! This is the second project (project1) of Web Programming with Python and Java Script course. Let's see a brief explanation of this project:
+Hi! Let's see a brief explanation of this project:
 
 This project contain two folders with twenty files:
 
