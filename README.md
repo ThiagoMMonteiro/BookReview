@@ -1,4 +1,4 @@
-# Project 1 - Book Review
+# Book Review Website
 
 [![author](https://img.shields.io/badge/Author-thiagommonteiro-blue)](https://www.linkedin.com/in/thiago-m-monteiro/) 
 
