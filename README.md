@@ -4,6 +4,8 @@
 
 Web Programming with Python (Flask), HTML, CSS, PostgreeSQL, external API (Goodreads)
 
+In addition to using the goodreads API, I also created my own API, in case it needs to be used. To do so, just make a GET request (... / api / isbn)
+
 Hi! Let's see a brief explanation of this project:
 
 This project contain two folders with twenty files:
@@ -81,3 +83,4 @@ file containing books and their details to be inserted into the database initial
 ## Explaining requirements.txt (briefly)
 
 It contains some libraries needed to run the application. Due to some platforms, something may have been missing, if it does, you will only need to install the missing libraries.
+
