@@ -6,6 +6,8 @@ Web Programming with Python (Flask), HTML, CSS, PostgreeSQL, external API (Goodr
 
 In addition to using the goodreads API, I also created my own API, in case it needs to be used. To do so, just make a GET request (... / api / isbn)
 
+See this website deployed in Heroku: https://book-review-thg.herokuapp.com/
+
 Let's see a brief explanation of this project:
 
 This project contain two folders with twenty files:
